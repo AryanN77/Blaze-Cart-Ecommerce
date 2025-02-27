@@ -37,7 +37,10 @@ export async function getMyCart() {
     myCart?.items.map((item) => {
         total += item.quantity * (item.product.price)
     })
-    return { myCart, total } || { items: [] };
+    if (total) {
+        return { myCart, total }
+    }
+    return { items: [] }
 }
 
 export async function updateQuantityActions({ prodId, action }: { prodId: string, action: string }) {
