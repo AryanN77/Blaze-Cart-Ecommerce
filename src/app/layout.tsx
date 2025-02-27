@@ -1,14 +1,12 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
+import { Geist, Geist_Mono, Recursive } from "next/font/google";
 import "./globals.css";
+import PageLayout from "@/components/PageLayout";
+import Image from "next/image";
+import { Toaster } from "sonner";
+import TanStackProvider from "@/providers/TanStackProvider";
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
-  subsets: ["latin"],
-});
-
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
+const recursive = Recursive({
   subsets: ["latin"],
 });
 
@@ -23,12 +21,17 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
-      <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
-      >
-        {children}
-      </body>
-    </html>
+    <TanStackProvider>
+      <html lang="en" suppressHydrationWarning>
+        <body
+          className={`${recursive.className} antialiased`}
+        >
+          <PageLayout>
+            {children}
+            <Toaster />
+          </PageLayout>
+        </body>
+      </html>
+    </TanStackProvider>
   );
 }
