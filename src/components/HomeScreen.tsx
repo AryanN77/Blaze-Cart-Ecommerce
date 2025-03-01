@@ -11,27 +11,27 @@ const Categories = [
     {
         icon: Computer,
         label: "Electronics",
-        href: "/"
+        href: "/shop"
     },
     {
         icon: Book,
         label: "Art & Literature",
-        href: "/"
+        href: "/shop"
     },
     {
         icon: Pencil,
         label: "Stationary",
-        href: "/"
+        href: "/shop"
     },
     {
         icon: Shirt,
         label: "Clothing & Footware",
-        href: "/"
+        href: "/shop"
     },
     {
         icon: WashingMachine,
         label: "Home Appliances",
-        href: "/"
+        href: "/shop"
     },
 
 ]
@@ -55,12 +55,12 @@ function HomeScreen() {
                     <Image src={"/landing.jpg"} alt='Landing' fill className='' />
                 </div>
             </div>
-            <div className="max-h-screen px-10 py-5 overflow-x-clip">
+            <div className="max-h-screen px-10 py-5 overflow-clip">
                 <div className="flex flex-col items-center gap-5">
                     <h2 className='text-5xl tracking-wider font-bold'>Shop by Category</h2>
                     <div className="flex flex-wrap gap-5 justify-center items-center my-3">
                         {Categories.map((item, i) => (
-                            <Link href={item.href} key={i} className='border border-b p-10 flex flex-col items-center rounded-full relative gap-2 text-white hover:text-slate-300 hover:scale-105 transition-all'>
+                            <Link href={item.href} key={i} className='border border-b p-5 md:p-10 flex flex-col items-center rounded-full relative gap-2 text-white hover:text-slate-300 hover:scale-105 transition-all'>
                                 <div className="absolute inset-0 bg-gradient-to-br from-purple-950 to-violet-600 -z-10 rounded-full" />
                                 <item.icon className='w-8 h-8' />
                                 <p className='font-bold'>{item.label}</p>
@@ -69,7 +69,7 @@ function HomeScreen() {
                     </div>
                 </div>
             </div>
-            <div className="max-w-6xl mx-auto relative overflow-clip">
+            <div className="h-screen max-w-6xl mx-auto relative overflow-clip my-10">
                 <Testimonials />
             </div>
         </div>

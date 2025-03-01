@@ -7,8 +7,7 @@ function PageLayout({ children }: { children: ReactNode }) {
     return (
         <div className='flex'>
             <Sidebar />
-            <div className="w-full relative flex flex-col">
-                <Image src={"/logo.svg"} alt='Logo' fill className='absolute inset-0 pointer-events-none select-none opacity-5 -z-100' />
+            <div className="w-full relative flex flex-col overflow-hidden">
                 {children}
                 <Footer />
             </div>

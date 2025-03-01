@@ -85,10 +85,10 @@ export function Testimonials() {
             <h1 className="text-3xl sm:text-4xl md:text-5xl text-center tracking-tighter font-bold">
                 Guaranteed Customer <Highlight>Satisfaction</Highlight>
             </h1>
-            <p className="mt-4 mb-10 text-md md:text-xl text-muted-foreground text-center">
+            <p className="mt-4 mb-5 text-md md:text-xl text-muted-foreground text-center">
                 Hear from our happy customers and see why they love our service.
             </p>
-            <div className="relative flex h-[500px] w-full flex-col items-center justify-center overflow-hidden rounded-lg  bg-background md:shadow-xl">
+            <div className="relative flex h-[400px] w-full flex-col items-center justify-center overflow-hidden rounded-lg  bg-background ">
                 <Marquee pauseOnHover className="[--duration:20s]">
                     {firstRow.map((review) => (
                         <ReviewCard key={review.username} {...review} />

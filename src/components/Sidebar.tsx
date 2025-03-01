@@ -48,7 +48,7 @@ async function Sidebar() {
             )}
             <nav className='mt-6 flex flex-col justify-center items-center gap-5'>
                 {LINKS.map((item, i) => (
-                    <Link href={item.href} key={i} className='flex gap-3 hover:bg-gray-200 rounded-lg px-8 py-2 w-full transition-all hover:text-primary hover:text-primary '>
+                    <Link href={item.href} key={i} className='flex gap-3 hover:bg-gray-200 rounded-lg px-8 py-2 w-full transition-all hover:text-primary '>
                         <item.icon className='w-8 h-8' />
                         <h2 className='text-lg'>{item.label}</h2>
                     </Link>
@@ -69,16 +69,16 @@ async function Sidebar() {
                         </DropdownMenuTrigger>
                         <DropdownMenuContent className='flex flex-col gap-2'>
 
-                            <DropdownMenuItem className='flex  '>
+                            {/* <DropdownMenuItem className='flex  '>
                                 <Link href={"/"} className=' hover:text-primary '>
                                     <span className='flex gap-2 items-center'>
                                         <User />
                                         <h2>Profile</h2>
                                     </span>
                                 </Link>
-                            </DropdownMenuItem>
+                            </DropdownMenuItem> */}
                             <DropdownMenuItem className='flex '>
-                                <Link href={"/"} className=' hover:text-primary '>
+                                <Link href={"/my-orders"} className=' hover:text-primary '>
                                     <span className='flex gap-2 items-center'>
                                         <LucideShoppingBag />
                                         <h2>My Orders</h2>

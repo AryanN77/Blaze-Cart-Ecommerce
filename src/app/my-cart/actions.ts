@@ -173,7 +173,7 @@ export async function createCheckoutSessionActions({ cartId, totalPrice }: { car
 
 
     const stripeSession = await stripe.checkout.sessions.create({
-        success_url: `${process.env.NEXT_PUBLIC_SERVER_URL}`,
+        success_url: `${process.env.NEXT_PUBLIC_SERVER_URL}/my-orders/${myOrder.id}`,
         cancel_url: `${process.env.NEXT_PUBLIC_SERVER_URL}/my-cart`,
         payment_method_types: ['card'],
         mode: "payment",
