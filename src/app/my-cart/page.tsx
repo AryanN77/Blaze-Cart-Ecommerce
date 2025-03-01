@@ -2,12 +2,12 @@
 import { CART_ITEMS } from '@/dummy/data'
 import React, { useEffect, useState } from 'react'
 import CartCard from './CartCard'
-import { Button } from '@/components/ui/button'
+import { Button, buttonVariants } from '@/components/ui/button'
 import { useKindeBrowserClient } from '@kinde-oss/kinde-auth-nextjs'
 import { useRouter } from 'next/navigation'
 import { useMutation, useQuery } from '@tanstack/react-query'
 import { createCheckoutSessionActions, getMyCart } from './actions'
-import { centsToDollars } from '@/lib/utils'
+import { centsToDollars, cn } from '@/lib/utils'
 import CartSkeleton from '@/components/CartSkeleton'
 import { Loader2Icon, SmileIcon } from 'lucide-react'
 import Link from 'next/link'
@@ -61,6 +61,7 @@ function Page() {
                     <div className=" flex flex-col items-center gap-3">
                         <h2 className='text-xl font-semibold '>Looks Like your Cart Is Empty!</h2>
                         <p className='flex items-center gap-2'>Visit <Link href={"/shop"} className='font-bold text-lg text-primary'> Store</Link> to begin Adding new Products<SmileIcon className='size-12 text-primary' /> </p>
+                        <Link className={cn(buttonVariants())} href="/my-orders">My Orders</Link>
                     </div>
 
                 </div>
@@ -72,6 +73,7 @@ function Page() {
             <div className="flex flex-col justify-center items-start">
                 <h2 className='text-3xl font-bold underline underline-offset-2 text-primary'>Your Cart</h2>
                 <p className='text-sm text-gray-900'>Click on Buy Now Button to Checkout</p>
+                <Link className={cn(buttonVariants())} href="/my-orders">My Orders</Link>
             </div>
             <div className="grid grid-cols-1 gap-5 my-3">
                 {data?.myCart?.items.map((item, i) => (

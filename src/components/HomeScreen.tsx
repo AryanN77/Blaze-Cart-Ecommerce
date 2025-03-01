@@ -6,6 +6,7 @@ import React from 'react'
 import { buttonVariants } from './ui/button'
 import { Book, Computer, Pencil, Shirt, WashingMachine } from 'lucide-react'
 import { Testimonials } from './Testimonal'
+import { getKindeServerSession, LogoutLink } from '@kinde-oss/kinde-auth-nextjs/server'
 
 const Categories = [
     {
@@ -36,7 +37,9 @@ const Categories = [
 
 ]
 
-function HomeScreen() {
+async function HomeScreen() {
+    const { getUser } = getKindeServerSession();
+    const user = await getUser();
     return (
         <div className='relative min-h-screen'>
             <div className='h-screen p-4  px-5  w-full grid grid-cols-1 md:grid-cols-2 gap-3 relative'>
@@ -47,7 +50,14 @@ function HomeScreen() {
                         <h2 className='text-5xl font-bold  my-4 bg-gradient-to-r from-white to-slate-300 text-transparent  bg-clip-text'>Blaze Cart</h2>
                         <div className=" flex items-center gap-2">
                             <Link href="/shop" className={cn(buttonVariants())}>Shop Now</Link>
-                            <Link href="/shop" className={cn(buttonVariants({ variant: "outline" }))}>My Cart</Link>
+                            {
+                                user ?
+                                    <LogoutLink className={cn(buttonVariants({ variant: "outline" }))} >
+                                        <h2 className='font-bold text-lg text-center tracking-wider'>Log Out</h2>
+                                    </LogoutLink>
+                                    :
+                                    <Link href="/shop" className={cn(buttonVariants({ variant: "outline" }))}>Sign In</Link>
+                            }
                         </div>
                     </div>
                 </div>

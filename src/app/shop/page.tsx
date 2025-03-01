@@ -15,6 +15,9 @@ import ProductSkeleton from '@/components/ProductSkeleton';
 import { useQuery, useQueryClient } from '@tanstack/react-query';
 import { getProductsAction } from './actions';
 import { useKindeBrowserClient } from '@kinde-oss/kinde-auth-nextjs';
+import { cn } from '@/lib/utils';
+import { buttonVariants } from '@/components/ui/button';
+import Link from 'next/link';
 
 function Page() {
     const { user } = useKindeBrowserClient();
@@ -41,7 +44,7 @@ function Page() {
             <div className="py-5 px-10 flex flex-col items-center">
                 <h2 className='text-5xl text-center text-primary font-bold underline underline-offset-8 py-5'>Shop For Exciting Offers</h2>
                 <p className='text-gray-700 font-semibold text-lg'> Get exciting offer on Your Purchases at Blaze Cart</p>
-                <div className="py-5 w-full flex justify-start ">
+                <div className="py-5 w-full flex justify-between ">
                     <div className=" flex flex-col gap-2">
                         <label htmlFor="category">Select a Category:</label>
                         <select id='category' onChange={useCallback((e: React.ChangeEvent<HTMLSelectElement>) => {
@@ -56,6 +59,12 @@ function Page() {
                             <option value="Appliances">Home Appliances</option>
                         </select>
                     </div>
+                    {
+                        user &&
+                        <div className="">
+                            <Link className={cn(buttonVariants())} href="/my-cart">My Cart</Link>
+                        </div>
+                    }
                 </div>
                 <div className="mt-5 grid grid-cols-1 lg:grid-cols-3 gap-5">
                     {
